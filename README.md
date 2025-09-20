@@ -1,7 +1,7 @@
 
 # React + Spring Boot Project
 
-## 📌 Overview
+##  Overview
 
 This is a **full-stack web application** built with:
 
@@ -12,7 +12,7 @@ The React frontend communicates with the Spring Boot backend via REST APIs.
 
 ---
 
-## 🚀 Project Structure
+##  Project Structure
 
 ```
 Project 1/
@@ -22,7 +22,7 @@ Project 1/
 
 ---
 
-## 🖥️ Running the Backend (Spring Boot)
+##  Running the Backend (Spring Boot)
 
 1. Navigate to the backend folder:
 
@@ -45,7 +45,7 @@ Project 1/
 
 ---
 
-## 🌐 Running the Frontend (React)
+##  Running the Frontend (React)
 
 1. Navigate to the frontend folder:
 
@@ -73,7 +73,7 @@ Project 1/
 
 ---
 
-## 🔗 API Connection
+##  API Connection
 
 * The React app calls APIs from the Spring Boot backend.
 * Example endpoint (from Spring Boot):
@@ -84,7 +84,7 @@ Project 1/
 
 ---
 
-## 📜 Scripts
+##  Scripts
 
 ### Frontend (React)
 
@@ -98,7 +98,7 @@ Project 1/
 
 ---
 
-## 📖 Future Improvements
+##  Future Improvements
 
 * Add database (MySQL / PostgreSQL) support
 * Dockerize frontend & backend
