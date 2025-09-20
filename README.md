@@ -105,5 +105,3 @@ Project 1/
 * Deploy on cloud (Heroku, AWS, or Render)
 
 
-
-Do you want me to also add **screenshots section** (placeholders) so you can show demo images later?
