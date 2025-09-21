@@ -10,7 +10,7 @@ This is a **full-stack web application** built with:
 
 The React frontend communicates with the Spring Boot backend via REST APIs.
 
----
+
 
 ##  Project Structure
 
@@ -43,7 +43,7 @@ Project 1/
    http://localhost:8080
    ```
 
----
+
 
 ##  Running the Frontend (React)
 
@@ -71,7 +71,7 @@ Project 1/
    http://localhost:3000
    ```
 
----
+
 
 ##  API Connection
 
@@ -82,7 +82,7 @@ Project 1/
   GET http://localhost:8080/hii
   ```
 
----
+
 
 ##  Scripts
 
@@ -96,7 +96,7 @@ Project 1/
 * `mvn spring-boot:run` → Run application
 * `mvn clean package` → Build JAR
 
----
+
 
 ##  Future Improvements
 
