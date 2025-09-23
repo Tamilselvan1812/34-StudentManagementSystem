@@ -1,12 +1,12 @@
 package com.example.demo;
 
-public class Students {
+public class Student {
     private int id;
     private String name;
     private int marks;
 
     
-    public Students(int id, String name, int marks) {
+    public Student(int id, String name, int marks) {
         this.id = id;
         this.name = name;
         this.marks = marks;
