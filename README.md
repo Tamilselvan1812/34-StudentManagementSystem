@@ -1,28 +1,29 @@
 
-# React + Spring Boot Project
 
-##  Overview
+# React + Spring Boot CRUD Project
 
-This is a **full-stack web application** built with:
+## Overview
+
+This is a **full-stack CRUD web application** built with:
 
 * **Frontend**: React (`my-app`)
 * **Backend**: Spring Boot (`demo`)
 
-The React frontend communicates with the Spring Boot backend via REST APIs.
+The React frontend communicates with the Spring Boot backend via REST APIs to **Add, List, Edit, and Delete student records**.
 
 
 
-##  Project Structure
+## Project Structure
 
 ```
-Project 1/
+Project/
 │── demo/        # Spring Boot backend
 │── my-app/      # React frontend
 ```
 
----
 
-##  Running the Backend (Spring Boot)
+
+## Running the Backend (Spring Boot)
 
 1. Navigate to the backend folder:
 
@@ -45,7 +46,7 @@ Project 1/
 
 
 
-##  Running the Frontend (React)
+## Running the Frontend (React)
 
 1. Navigate to the frontend folder:
 
@@ -73,22 +74,40 @@ Project 1/
 
 
 
-##  API Connection
+## Features / API Endpoints
 
-* The React app calls APIs from the Spring Boot backend.
-* Example endpoint (from Spring Boot):
+| Method | Endpoint                  | Description              |
+| ------ | ------------------------- | ------------------------ |
+| GET    | `/`                       | Get all students         |
+| POST   | `/students`               | Add a new student        |
+| DELETE | `/students/byName/{name}` | Delete a student by name |
+| PUT    | `/students/byName/{name}` | Update a student by name |
 
-  ```
-  GET http://localhost:8080/hii
-  ```
+### Frontend Features
+
+* **Student Table**
+
+  * Display all students with ID, Name, and Marks
+  * Delete a student by clicking **Delete**
+  * Edit a student by clicking **Edit** (navigates to form)
+
+* **Student Form**
+
+  * Add a new student
+  * Edit existing student (pre-fills form and updates backend)
+
+* **Routing**
+
+  * `/` → Student Table
+  * `/addStudent` → Student Form (for adding or editing)
 
 
 
-##  Scripts
+## Scripts
 
 ### Frontend (React)
 
-* `npm start` → Run dev server
+* `npm start` → Run development server
 * `npm run build` → Build production files
 
 ### Backend (Spring Boot)
@@ -98,10 +117,12 @@ Project 1/
 
 
 
-##  Future Improvements
+## Future Improvements
 
-* Add database (MySQL / PostgreSQL) support
-* Dockerize frontend & backend
-* Deploy on cloud (Heroku, AWS, or Render)
+* Connect backend to a database (MySQL/PostgreSQL)
+* Add proper form validation
+* Improve UI with modern design frameworks (Material UI / Tailwind)
+* Deploy frontend & backend on cloud (Heroku, AWS, Render)
+* Add search/filter for students
 
 
