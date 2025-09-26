@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 function StudentForm() {
   const [name, setName] = useState("");
+  const [age, setAge] = useState(""); 
   const [marks, setMarks] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,6 +16,7 @@ function StudentForm() {
     if (location.state && location.state.student) {                    // Prefill form if editing
       const { student } = location.state;
       setName(student.name);
+      setAge(student.age);
       setMarks(student.marks);
       setOldName(student.name);                                         // keep old name separately
     }
@@ -23,8 +25,10 @@ function StudentForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    
     const studentData = {
       name: name,
+      age: parseInt(age),
       marks: parseInt(marks)
     };
 
@@ -51,6 +55,16 @@ function StudentForm() {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+
+         <div>
+          <label>Age: </label>
+          <input
+            type="number"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
             required
           />
         </div>

@@ -35,8 +35,9 @@ function StudentTable() {
       <table border="1">
         <thead>
           <tr>
-            <th>ID</th>
+            
             <th>Name</th>
+             <th>Age</th>
             <th>Marks</th>
             <th>Action</th>
           </tr>
@@ -44,8 +45,9 @@ function StudentTable() {
         <tbody>
           {students.map((s) => (
             <tr key={s.id}>
-              <td>{s.id}</td>
+             
               <td>{s.name}</td>
+              <td>{s.age}</td>
               <td>{s.marks}</td>
               <td>
                 <button type="button" onClick={() => handleDeleteByName(s.name)}>Delete</button>

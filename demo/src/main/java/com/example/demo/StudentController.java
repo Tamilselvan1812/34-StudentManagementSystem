@@ -16,45 +16,33 @@ public class StudentController {
 
     private List<Student> students = new ArrayList<>();
 
-    
     @GetMapping("/")
     public List<Student> getAllStudents() {
         return students;
     }
 
-    
     @PostMapping("/students")
     public Student addStudent(@RequestBody Student student) {
-        student.setId(students.size() + 1); 
         students.add(student);
         return student;
-    } 
-    
- 
-    @DeleteMapping("/students/byName/{name}")
-    public String deleteStudentByName(@PathVariable String name) {
-        for (Student s : students) {
-            if (s.getName().equals(name)) { 
-                students.remove(s);
-                return "Student deleted successfully";
-            }
-        }
-        return "Student not found";
     }
 
- 
+    @DeleteMapping("/students/byName/{name}")
+    public String deleteStudentByName(@PathVariable String name) {
+        students.removeIf(s -> s.getName().equals(name));
+        return "Student deleted successfully";
+    }
+
     @PutMapping("/students/byName/{name}")
     public Student updateStudentByName(@PathVariable String name, @RequestBody Student updatedStudent) {
         for (Student s : students) {
-            if (s.getName().equals(name)) { 
+            if (s.getName().equals(name)) {
                 s.setName(updatedStudent.getName());
-                s.setMarks(updatedStudent.getMarks());       
-                return s;                                       
+                s.setAge(updatedStudent.getAge());
+                s.setMarks(updatedStudent.getMarks());
+                return s;
             }
         }
-        return null; 
+        return null;
     }
-
-
-
 }
