@@ -5,7 +5,7 @@ public class Student {
     private int marks;
 
 
-    public Student() {}
+   
     public Student(String name, int age, int marks) {
         this.name = name;
         this.age = age;

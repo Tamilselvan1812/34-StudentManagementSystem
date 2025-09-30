@@ -9,7 +9,7 @@ function StudentTable() {
   const fetchStudents = () => {
     axios.get("http://localhost:8080/")
       .then((res) => setStudents(res.data))
-      .catch((err) => console.error("Error fetching students", err));
+      .catch((err) => console.log("Error fetching students", err));
   };
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function StudentTable() {
   const handleDeleteByName = (name) => {
     axios.delete(`http://localhost:8080/students/byName/${name}`)
       .then(() => fetchStudents())
-      .catch((err) => console.error("Error deleting student", err));
+      .catch((err) => console.log("Error deleting student", err));
   };
 
   const handleEditByName = (student) => {
