@@ -1,10 +1,22 @@
 package com.example.demo;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Student {
+	
+	 @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 private Long id;
+	 
     private String name;
     private int age;
     private int marks;
 
-
+    public Student() {}
    
     public Student(String name, int age, int marks) {
         this.name = name;
@@ -12,6 +24,15 @@ public class Student {
         this.marks = marks;
     }
 
+    
+    public Long getId()
+    {
+       return id;
+    }
+    public void setId(Long id)
+    { 
+    	this.id = id; 
+    	}
     
     public String getName() 
     { 

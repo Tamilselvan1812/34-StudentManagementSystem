@@ -1,6 +1,8 @@
 package com.example.demo;
-import java.util.ArrayList;
+
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,35 +16,38 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:3000")
 public class StudentController {
 
-    private List<Student> students = new ArrayList<>();
+	@Autowired
+    private StudentRepository studentRepository;
 
     @GetMapping("/")
     public List<Student> getAllStudents() {
-        return students;
+    	 return studentRepository.findAll();
     }
 
     @PostMapping("/students")
     public Student addStudent(@RequestBody Student student) {
-        students.add(student);
-        return student;
+    	 return studentRepository.save(student);
     }
 
     @DeleteMapping("/students/byName/{name}")
     public String deleteStudentByName(@PathVariable String name) {
-        students.removeIf(s -> s.getName().equals(name));
-        return "Student deleted successfully";
+    	 Student student = studentRepository.findByName(name);
+         if (student != null) {
+             studentRepository.delete(student);
+             return "Student deleted successfully";
+         }
+         return "Student not found";
     }
 
     @PutMapping("/students/byName/{name}")
     public Student updateStudentByName(@PathVariable String name, @RequestBody Student updatedStudent) {
-        for (Student s : students) {
-            if (s.getName().equals(name)) {
-                s.setName(updatedStudent.getName());
-                s.setAge(updatedStudent.getAge());
-                s.setMarks(updatedStudent.getMarks());
-                return s;
-            }
-        }
-        return null;
+    	 Student student = studentRepository.findByName(name);
+    	 if (student != null) {
+             student.setName(updatedStudent.getName());
+             student.setAge(updatedStudent.getAge());
+             student.setMarks(updatedStudent.getMarks());
+             return studentRepository.save(student);
+         }
+         return null;
     }
 }
