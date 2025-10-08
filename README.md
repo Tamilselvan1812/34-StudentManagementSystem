@@ -1,16 +1,16 @@
 
 
-# React + Spring Boot CRUD Project
+# React + Spring Boot + PostgreSQL Student Management
 
 ## Overview
 
-This is a **full-stack CRUD web application** built with:
+This is a **full-stack student management web application** built with:
 
-* **Frontend**: React (`my-app`)
-* **Backend**: Spring Boot (`demo`)
+* **Frontend:** React (`my-app`)
+* **Backend:** Spring Boot (`demo`)
+* **Database:** PostgreSQL (`studentdb`)
 
-The React frontend communicates with the Spring Boot backend via REST APIs to **Add, List, Edit, and Delete student records**.
-
+The app allows you to **add, edit, delete, and view student details** (Name, Age, Marks) with persistent storage in PostgreSQL.
 
 
 ## Project Structure
@@ -23,83 +23,132 @@ Project/
 
 
 
-## Running the Backend (Spring Boot)
+## Features
 
-1. Navigate to the backend folder:
-
-   ```bash
-   cd demo
-   ```
-
-2. Run using Maven:
-
-   ```bash
-   ./mvnw spring-boot:run   # Mac/Linux
-   mvnw spring-boot:run     # Windows
-   ```
-
-3. The backend will start on:
-
-   ```
-   http://localhost:8080
-   ```
+* Add new student (Name, Age, Marks)
+* View all students in a table
+* Edit student details
+* Delete student by name
+* Data is stored persistently in PostgreSQL
 
 
 
-## Running the Frontend (React)
+## Backend: Spring Boot
 
-1. Navigate to the frontend folder:
+### 1. Setup
 
-   ```bash
-   cd my-app
-   ```
+1. Open terminal and navigate to the backend folder:
+
+```bash
+cd demo
+```
+
+2. Add dependencies in `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>42.6.0</version>
+</dependency>
+```
+
+3. Configure database in `application.properties`:
+
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/studentdb
+spring.datasource.username=postgres
+spring.datasource.password=your_password
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+```
+
+> Replace `your_password` with your PostgreSQL password.
+
+
+### 2. Run Backend
+
+```bash
+./mvnw spring-boot:run   # Mac/Linux
+mvnw spring-boot:run     # Windows
+```
+
+Backend will run at:
+
+```
+http://localhost:8080
+```
+
+
+
+### 3. API Endpoints
+
+| Method | Endpoint                  | Description            |
+| ------ | ------------------------- | ---------------------- |
+| GET    | `/`                       | Fetch all students     |
+| POST   | `/students`               | Add new student        |
+| PUT    | `/students/byName/{name}` | Update student by name |
+| DELETE | `/students/byName/{name}` | Delete student by name |
+
+
+
+## Frontend: React
+
+### 1. Setup
+
+1. Navigate to frontend folder:
+
+```bash
+cd my-app
+```
 
 2. Install dependencies:
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-3. Start the development server:
+3. Start development server:
 
-   ```bash
-   npm start
-   ```
+```bash
+npm start
+```
 
-4. The frontend will run on:
+Frontend will run at:
 
-   ```
-   http://localhost:3000
-   ```
+```
+http://localhost:3000
+```
 
 
 
-## Features / API Endpoints
+### 2. Components
 
-| Method | Endpoint                  | Description              |
-| ------ | ------------------------- | ------------------------ |
-| GET    | `/`                       | Get all students         |
-| POST   | `/students`               | Add a new student        |
-| DELETE | `/students/byName/{name}` | Delete a student by name |
-| PUT    | `/students/byName/{name}` | Update a student by name |
+* **StudentTable:** Displays all students in a table with Delete & Edit buttons
+* **StudentForm:** Form to add or edit student details
 
-### Frontend Features
 
-* **Student Table**
 
-  * Display all students with ID, Name, and Marks
-  * Delete a student by clicking **Delete**
-  * Edit a student by clicking **Edit** (navigates to form)
+### 3. Navigation
 
-* **Student Form**
+* Add student → navigates to form
+* Edit student → pre-fills form with student data
+* Delete student → removes student from DB
 
-  * Add a new student
-  * Edit existing student (pre-fills form and updates backend)
 
-* **Routing**
 
-  * `/` → Student Table
-  * `/addStudent` → Student Form (for adding or editing)
+## Database
+
+* PostgreSQL database `studentdb` stores all student records
+* Spring Boot uses **JPA** to persist data
+* Data remains even if Spring Boot server stops
 
 
 
@@ -107,22 +156,23 @@ Project/
 
 ### Frontend (React)
 
-* `npm start` → Run development server
+* `npm start` → Run dev server
 * `npm run build` → Build production files
 
 ### Backend (Spring Boot)
 
-* `mvn spring-boot:run` → Run application
+* `mvn spring-boot:run` → Run backend
 * `mvn clean package` → Build JAR
 
 
 
 ## Future Improvements
 
-* Connect backend to a database (MySQL/PostgreSQL)
-* Add proper form validation
-* Improve UI with modern design frameworks (Material UI / Tailwind)
-* Deploy frontend & backend on cloud (Heroku, AWS, Render)
-* Add search/filter for students
+* Add authentication
+* Search & filter students
+* Pagination for large datasets
+* Deploy backend (Heroku/AWS) and frontend (Netlify/GitHub Pages)
+
+
 
 
