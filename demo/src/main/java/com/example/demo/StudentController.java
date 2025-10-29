@@ -31,23 +31,17 @@ public class StudentController {
 
     @DeleteMapping("/students/byName/{name}")
     public String deleteStudentByName(@PathVariable String name) {
-    	 Student student = studentRepository.findByName(name);
-         if (student != null) {
-             studentRepository.delete(student);
-             return "Student deleted successfully";
-         }
-         return "Student not found";
+    	  studentRepository.delete(studentRepository.findByName(name));
+    	    return "Student deleted successfully";
     }
 
     @PutMapping("/students/byName/{name}")
     public Student updateStudentByName(@PathVariable String name, @RequestBody Student updatedStudent) {
     	 Student student = studentRepository.findByName(name);
-    	 if (student != null) {
-             student.setName(updatedStudent.getName());
+    	     student.setName(updatedStudent.getName());
              student.setAge(updatedStudent.getAge());
              student.setMarks(updatedStudent.getMarks());
              return studentRepository.save(student);
-         }
-         return null;
+        
     }
 }
